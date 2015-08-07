@@ -7,32 +7,35 @@ import (
 )
 
 func main() {
+
 	pdf := gopdf.GoPdf{}
 	pdf.Start(gopdf.Config{Unit: "pt", PageSize: gopdf.Rect{W: 595.28, H: 841.89}}) //595.28, 841.89 = A4
 	pdf.AddPage()
 	var err error
 	err = pdf.AddTTFFont("HDZB_5", "../ttf/wts11.ttf")
 	if err != nil {
-		log.Printf("%s", err.Error())
+		log.Print(err.Error())
 		return
 	}
 
-	err = pdf.AddTTFFont("osaka", "../ttf/osaka.unicode.ttf")
+	err = pdf.AddTTFFont("TakaoPGothic", "../ttf/TakaoPGothic.ttf")
 	if err != nil {
-		log.Printf("ERROR:%s\n", err.Error())
+		log.Print(err.Error())
 		return
 	}
 
 	err = pdf.AddTTFFont("loma", "../ttf/Loma.ttf")
 	if err != nil {
-		log.Printf("ERROR:%s\n", err.Error())
+		log.Print(err.Error())
 		return
 	}
+
+	err = pdf.AddTTFFont("namum", "../ttf/NanumBarunGothic.ttf")
 
 	//china
 	err = pdf.SetFont("HDZB_5", "", 14)
 	if err != nil {
-		log.Printf("ERROR:%s\n", err.Error())
+		log.Printf(err.Error())
 		return
 	}
 	pdf.Cell(nil, "Hello")
@@ -41,9 +44,9 @@ func main() {
 	pdf.Br(20)
 
 	//japan
-	err = pdf.SetFont("osaka", "", 14)
+	err = pdf.SetFont("TakaoPGothic", "", 14)
 	if err != nil {
-		log.Printf("ERROR:%s\n", err.Error())
+		log.Print(err.Error())
 		return
 	}
 	pdf.Cell(nil, "こんにちは")
@@ -52,10 +55,20 @@ func main() {
 	//thai
 	err = pdf.SetFont("loma", "", 14)
 	if err != nil {
-		log.Printf("ERROR:%s\n", err.Error())
+		log.Print(err.Error())
 		return
 	}
 	pdf.Cell(nil, "สวัสดี")
+	pdf.Br(20)
+
+	//korean
+	err = pdf.SetFont("namum", "", 14)
+	if err != nil {
+		log.Print(err.Error())
+		return
+	}
+	pdf.Cell(nil, "안녕하세요")
 
 	pdf.WritePdf("hello2.pdf")
+
 }
