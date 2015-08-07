@@ -13,7 +13,7 @@ func main() {
 	var err error
 	err = pdf.AddTTFFont("loma", "../ttf/Loma.ttf")
 	if err != nil {
-		log.Printf("%s", err.Error())
+		log.Print(err.Error())
 		return
 	}
 
@@ -21,7 +21,7 @@ func main() {
 	pdf.Image("../imgs/gopher.jpg", 200, 50, nil)
 	err = pdf.SetFont("loma", "", 14)
 	if err != nil {
-		log.Printf("ERROR:%s\n", err.Error())
+		log.Print(err.Error())
 		return
 	}
 	pdf.SetX(250)
