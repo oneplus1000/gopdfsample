@@ -72,3 +72,4 @@ func main() {
 	pdf.WritePdf("hello2.pdf")
 
 }
+
