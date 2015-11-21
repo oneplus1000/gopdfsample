@@ -5,6 +5,7 @@ import (
 	"log"
 
 	"github.com/signintech/gopdf"
+	"github.com/signintech/gopdf/fontmaker/core"
 )
 
 func main() {
@@ -16,7 +17,7 @@ func main() {
 		log.Print(err.Error())
 		return
 	}
-	fontSize := 14
+	fontSize := 24
 	err = pdf.SetFont("Roboto", "", fontSize)
 	if err != nil {
 		log.Print(err.Error())
@@ -39,6 +40,25 @@ func main() {
 	}
 	realWidth := float64(sumWidth) * (float64(fontSize) / 1000.0) //convert
 	fmt.Printf("realWidth = %f", realWidth)
+
+	var parser core.TTFParser
+	err = parser.Parse("../ttf/Roboto-Regular.ttf")
+	if err != nil {
+		log.Print(err.Error())
+		return
+	}
+	//get  CapHeight (https://en.wikipedia.org/wiki/Cap_height)
+	cap := float64(float64(parser.CapHeight()) * 1000.00 / float64(parser.UnitsPerEm()))
+	//convert
+	realHeight := cap * (float64(fontSize) / 1000.0)
+	fmt.Printf("realHeight = %f", realHeight)
+	//test
+	pdf.Br(realHeight)
+	pdf.Cell(nil, "How can I cordinate the text that I want draw?")
+	pdf.Br(realHeight)
+	pdf.Cell(nil, "How can I cordinate the text that I want draw?123")
+	pdf.Br(realHeight)
+	pdf.Cell(nil, "How can I cordinate the text that I want draw?456")
 
 	pdf.WritePdf("hello.pdf")
 }
