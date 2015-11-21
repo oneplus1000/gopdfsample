@@ -10,18 +10,19 @@ func main() {
 	pdf := gopdf.GoPdf{}
 	pdf.Start(gopdf.Config{Unit: "pt", PageSize: gopdf.Rect{W: 595.28, H: 841.89}}) //595.28, 841.89 = A4
 	pdf.AddPage()
-	err := pdf.AddTTFFont("HDZB_5", "../ttf/wts11.ttf")
+	err := pdf.AddTTFFont("Roboto", "../ttf/Roboto-Regular.ttf")
 	if err != nil {
 		log.Print(err.Error())
 		return
 	}
-	err = pdf.SetFont("HDZB_5", "", 14)
+	fontSize := 14
+	err = pdf.SetFont("Roboto", "", fontSize)
 	if err != nil {
 		log.Print(err.Error())
 		return
 	}
-	pdf.SetGrayFill(0.5)
-	pdf.Cell(nil, "您好")
+	//pdf.SetGrayFill(0.5)
+	pdf.Cell(nil, "ÁÉÍÓÖŐÚÜŰ")
+
 	pdf.WritePdf("hello.pdf")
-	//test
 }

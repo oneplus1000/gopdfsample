@@ -38,6 +38,13 @@ func main() {
 		log.Printf(err.Error())
 		return
 	}
+
+	err = pdf.AddTTFFont("Roboto", "../ttf/Roboto-Regular.ttf")
+	if err != nil {
+		log.Print(err.Error())
+		return
+	}
+
 	pdf.Cell(nil, "Hello")
 	pdf.Br(20)
 	pdf.Cell(nil, "您好")
@@ -61,6 +68,15 @@ func main() {
 	pdf.Cell(nil, "สวัสดี")
 	pdf.Br(20)
 
+	//test composite glyph
+	err = pdf.SetFont("Roboto", "", 14)
+	if err != nil {
+		log.Print(err.Error())
+		return
+	}
+	pdf.Cell(nil, "ÁÉÍÓÖŐÚÜŰ")
+	pdf.Br(20)
+
 	//korean
 	err = pdf.SetFont("namum", "", 14)
 	if err != nil {
@@ -68,8 +84,8 @@ func main() {
 		return
 	}
 	pdf.Cell(nil, "안녕하세요")
+	pdf.Br(20)
 
 	pdf.WritePdf("hello2.pdf")
 
 }
-
