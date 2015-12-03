@@ -76,6 +76,8 @@ func main() {
 	}
 	pdf.Cell(nil, "ÁÉÍÓÖŐÚÜŰ")
 	pdf.Br(20)
+	pdf.Cell(nil, "ÁÉÍÓÖŐÚÜŰ")
+	pdf.Br(20)
 
 	//korean
 	err = pdf.SetFont("namum", "", 14)
