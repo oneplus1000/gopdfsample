@@ -11,7 +11,6 @@ func main() {
 	pdf.AddPage()
 	pdf.SetLineWidth(1)
 	pdf.Oval(100, 200, 500, 500)
-	pdf.Line(10, 10, 100, 100)
 	pdf.WritePdf("oval.pdf")
 	//fmt.Printf("")
 
