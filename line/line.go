@@ -6,6 +6,9 @@ import (
 	"github.com/signintech/gopdf"
 )
 
+/*
+Thank https://github.com/miiton for setLineType
+*/
 func main() {
 	pdf := gopdf.GoPdf{}
 	pdf.Start(gopdf.Config{Unit: "pt", PageSize: gopdf.Rect{W: 595.28, H: 841.89}}) //595.28, 841.89 = A4
@@ -16,6 +19,8 @@ func main() {
 		return
 	}
 	pdf.SetLineWidth(2)
+	pdf.SetLineType("dashed")
+	//pdf.SetLineType("dotted")
 	pdf.Line(10, 30, 585, 30)
 
 	err = pdf.SetFont("TakaoPGothic", "", 14)
