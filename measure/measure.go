@@ -24,8 +24,12 @@ func main() {
 	}
 
 	text01 := "こんにちは"
-	pdf.Cell(nil, text01)
-	w01, _ := pdf.MeasureTextWidth(text01)
+	//pdf.Cell(nil, text01)
+	w01, err := pdf.MeasureTextWidth(text01)
+	if err != nil {
+		log.Printf("Err:%s\n", err.Error())
+		return
+	}
 	fmt.Printf("MeasureTextWidth = %f\n", w01)
 	pdf.WritePdf("m.pdf")
 }

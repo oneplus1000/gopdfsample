@@ -17,13 +17,15 @@ func main() {
 		return
 	}
 
-	//#1 pic
-	pdf.Image("../imgs/gopher.jpg", 200, 50, nil)
 	err = pdf.SetFont("loma", "", 14)
 	if err != nil {
 		log.Print(err.Error())
 		return
 	}
+	pdf.Cell(nil, "hello")
+	//#1 pic
+	pdf.Image("../imgs/gopher.jpg", 200, 50, nil)
+
 	pdf.SetX(250)
 	pdf.SetY(200)
 	pdf.Cell(nil, "gopher and gopher")
