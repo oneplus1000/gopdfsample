@@ -16,20 +16,27 @@ func main() {
 		log.Print(err.Error())
 		return
 	}
-
 	err = pdf.SetFont("TakaoPGothic", "", 14)
 	if err != nil {
 		log.Print(err.Error())
 		return
 	}
 
-	text01 := "こんにちは"
-	//pdf.Cell(nil, text01)
-	w01, err := pdf.MeasureTextWidth(text01)
-	if err != nil {
-		log.Printf("Err:%s\n", err.Error())
-		return
+	i := 0
+	for i < 2 {
+		text01 := "こんにちは"
+		measureTextWidth, err := pdf.MeasureTextWidth(text01)
+		if err != nil {
+			log.Printf("Err:%s\n", err.Error())
+			return
+		}
+		fmt.Printf("MeasureTextWidth = %f\n", measureTextWidth)
+
+		pdf.Cell(nil, text01)
+		pdf.SetX(pdf.GetX() + measureTextWidth)
+		pdf.Cell(nil, text01)
+		pdf.SetX(pdf.GetX() + measureTextWidth)
+		i++
 	}
-	fmt.Printf("MeasureTextWidth = %f\n", w01)
 	pdf.WritePdf("m.pdf")
 }

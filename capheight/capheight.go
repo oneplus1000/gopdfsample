@@ -50,4 +50,5 @@ func main() {
 	pdf.Cell(nil, "Sphinx2")
 
 	pdf.WritePdf("hello.pdf")
+
 }

@@ -18,18 +18,20 @@ func main() {
 		log.Print(err.Error())
 		return
 	}
+	//pdf.SetGrayStroke(0.5)
+	pdf.SetStrokeColor(10, 255, 0)
+	//pdf.SetTextColor(255, 0, 0)
 	pdf.SetLineWidth(2)
 	pdf.SetLineType("dashed")
-	//pdf.SetLineType("dotted")
-	pdf.Line(10, 30, 585, 30)
 
-	err = pdf.SetFont("TakaoPGothic", "", 14)
+	err = pdf.SetFont("TakaoPGothic", "U", 14)
 	if err != nil {
 		log.Print(err.Error())
 		return
 	}
 	pdf.Cell(nil, "こんにちは")
 	pdf.Br(20)
+	pdf.Line(10, 30, 585, 30)
 	pdf.WritePdf("line.pdf")
 
 }

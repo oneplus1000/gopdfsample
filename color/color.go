@@ -44,4 +44,5 @@ func main() {
 	pdf.Cell(nil, "blue")
 
 	pdf.WritePdf("color.pdf")
+
 }
