@@ -9,12 +9,6 @@ import (
 func main() {
 	pdf := gopdf.GoPdf{}
 
-	/*
-		pdf.Start(gopdf.Config{Unit: "pt",
-			PageSize: gopdf.Rect{W: 595.28, H: 841.89}, //595.28, 841.89 = A4
-		})
-	*/
-
 	pdf.Start(gopdf.Config{
 		PageSize: gopdf.Rect{W: 595.28, H: 841.89}, //595.28, 841.89 = A4
 		Protection: gopdf.PDFProtectionConfig{UseProtection: true,
