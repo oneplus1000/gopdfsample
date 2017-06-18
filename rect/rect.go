@@ -10,6 +10,7 @@ func main() {
 	pdf := gopdf.GoPdf{}
 	pdf.Start(gopdf.Config{PageSize: gopdf.Rect{W: 595.28, H: 841.89}}) //595.28, 841.89 = A4
 	pdf.AddPage()
+	//pdf.AddPageWithOption(gopdf.PageOption{PageSize: gopdf.Rect{W: 841.89, H: 595.28}})
 	err := pdf.AddTTFFont("wts11", "../ttf/wts11.ttf")
 	if err != nil {
 		log.Print(err.Error())
