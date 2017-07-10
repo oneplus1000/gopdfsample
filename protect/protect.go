@@ -11,10 +11,11 @@ func main() {
 
 	pdf.Start(gopdf.Config{
 		PageSize: gopdf.Rect{W: 595.28, H: 841.89}, //595.28, 841.89 = A4
-		Protection: gopdf.PDFProtectionConfig{UseProtection: true,
-			Permissions: gopdf.PermissionsPrint | gopdf.PermissionsCopy | gopdf.PermissionsModify,
-			OwnerPass:   []byte("1234"),
-			UserPass:    []byte("5555")},
+		Protection: gopdf.PDFProtectionConfig{
+			UseProtection: true,
+			Permissions:   gopdf.PermissionsPrint | gopdf.PermissionsCopy | gopdf.PermissionsModify,
+			OwnerPass:     []byte("1234"),
+			UserPass:      []byte("5555")},
 	})
 
 	pdf.AddPage()
