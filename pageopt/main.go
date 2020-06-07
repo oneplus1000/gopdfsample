@@ -24,7 +24,7 @@ func main() {
 
 	pdf.Cell(nil, "AAAAAAA")
 	//pdf.AddPageWithOption(gopdf.PageOption{PageSize: gopdf.Rect{W: 595.28, H: 841.89}})
-	pdf.AddPageWithOption(gopdf.PageOption{PageSize: gopdf.Rect{W: 841.89, H: 595.28}})
+	pdf.AddPageWithOption(gopdf.PageOption{PageSize: &gopdf.Rect{W: 841.89, H: 595.28}})
 	//pdf.AddPage()
 	pdf.Cell(nil, "BBBBBBB")
 	pdf.AddPage()

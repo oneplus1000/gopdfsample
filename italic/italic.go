@@ -9,9 +9,9 @@ import (
 //gopdf had no mechanism for set italic ( pdf.SetFont("SOMEFONT", "I", 14) ), but you can do like this.
 func main() {
 	pdf := gopdf.GoPdf{}
-	pdf.Start(gopdf.Config{Unit: "pt", PageSize: gopdf.Rect{W: 595.28, H: 841.89}}) //595.28, 841.89 = A4
+	pdf.Start(gopdf.Config{Unit: gopdf.Unit_PT, PageSize: gopdf.Rect{W: 595.28, H: 841.89}}) //595.28, 841.89 = A4
 	pdf.AddPage()
-	
+
 	err := pdf.AddTTFFont("DejaVuSerif", "../ttf/DejaVuSerif.ttf")
 	if err != nil {
 		log.Print(err.Error())
