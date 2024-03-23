@@ -2,4 +2,4 @@
 *.bak
 *.orig
 .vscode
-
+go.work

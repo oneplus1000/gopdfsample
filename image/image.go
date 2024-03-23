@@ -1,7 +1,6 @@
 package main
 
 import (
-	"io/ioutil"
 	"log"
 	"os"
 
@@ -56,7 +55,7 @@ func main() {
 }
 
 func getImageBytes() []byte {
-	b, err := ioutil.ReadFile("../imgs/gopher.jpg")
+	b, err := os.ReadFile("../imgs/gopher.jpg")
 	if err != nil {
 		panic(err)
 	}
